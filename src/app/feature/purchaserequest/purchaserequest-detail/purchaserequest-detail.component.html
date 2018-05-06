@@ -1,0 +1,70 @@
+<app-menu></app-menu>
+<div class = "contentBox">
+	<div class = "Box">
+		<div class = 'lefthalf'>
+			<h1><span id="barcode"> ---------</span>{{title}}<span id="barcode"> ----</span></h1>
+		</div>
+		<table class="table table-sm" *ngIf='purchaserequest'>
+		<p *ngIf= '!purchaserequest'>Loading...</p>
+			<thead>
+				<tr>
+					<th>User</th>
+					<th>Description</th>
+					<th>Justification</th>
+					<th>Date Needed</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{ purchaserequest.User.UserName }}</td>
+					<td>{{ purchaserequest.Description }}</td>
+					<td>{{ purchaserequest.Justification }}</td>
+					<td>{{ purchaserequest.DateNeeded }}</td>
+				</tr>
+			</tbody>
+			<thead>
+				<tr>
+					<th>Delivery Mode</th>
+					<th>Status</th>
+					<th>Submitted</th>
+					<th>Rejection Reason</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{ purchaserequest.DeliveryMode }}</td>
+					<td>{{ purchaserequest.Status }}</td>
+					<td>{{ purchaserequest.SubmittedDate }}</td>
+					<td>{{ purchaserequest.ReasonForRejection }}</td>
+				</tr>
+			</tbody>
+		</table>
+			<h3>Line Items:</h3>
+			<table class="table table-sm" *ngIf="prlis">
+			<thead>
+				<th>Product</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Details/Edit</th>
+			</thead>
+			<tbody>
+				<tr *ngFor = 'let prli of prlis'>
+				<td>{{ prli.Product.Name }}</td>
+				<td>{{ prli.Product.Price }}</td>
+				<td>{{ prli.Quantity }}</td>
+				<td>
+					<a routerLink='/purchaserequestlineitem/detail/{{prli.Id}}/{{prID}}'><img src = 'assets/details.png' width = '20' height = '20' title = 'Details'> </a>
+					<a routerLink='/purchaserequestlineitem/edit/{{prli.Id}}/{{prID}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
+				</td>
+				</tr>
+			</tbody>
+		</table>
+				<h3 *ngIf="purchaserequest">Purchase Request Total:  ${{ purchaserequest.Total }}</h3>
+
+		<div class="form-group row">
+			<a routerLink='/purchaserequestlineitem/create/{{prID}}' class='btn btn-primary' title='Edit'>Add Line Item</a>
+			<a routerLink='/purchaserequest/edit/{{prID}}' class='btn btn-primary' title='Edit'>Edit Purchase Request</a>
+			<button (click)="remove()" class='btn btn-danger' title='Delete'>Remove Purchase Request</button>
+		</div>
+	</div>
+</div>

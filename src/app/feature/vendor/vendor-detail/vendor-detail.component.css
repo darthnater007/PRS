@@ -1,0 +1,10 @@
+.contentBox{
+	background-color: rgb(87,71,134, 0.5);
+	position: absolute;
+	height: 75%;
+	width: 95%;
+	left: 50%;
+	top: 20%;
+	transform: translateY(-50%);
+	transform: translateX(-50%);
+}

@@ -1,0 +1,38 @@
+<app-menu></app-menu>
+<div class = "contentBox">
+	<div class = "Box">
+		<div class = 'lefthalf'>
+			<h1><span id="barcode"> ---------</span>{{title}}<span id="barcode"> ----</span></h1>
+		</div>
+		<table class="table table-sm" *ngIf='purchaserequestlineitem'>
+		<p *ngIf= '!purchaserequestlineitem'>Loading...</p>
+		<tr>
+		  <td>Id:</td><td>{{ purchaserequestlineitem.Id }}</td>
+		</tr>
+		<tr>
+		  <td>User:</td><td>{{ purchaserequestlineitem.PurchaseRequest.User.UserName }}</td>
+		</tr>
+		<tr>
+		  <td>Description:</td><td>{{ purchaserequestlineitem.PurchaseRequest.Description }}</td>
+		</tr>
+		<tr>
+		  <td>Product:</td><td>{{ purchaserequestlineitem.Product.Name }}</td>
+		</tr>
+		<tr>
+		  <td>Price:</td><td>{{ purchaserequestlineitem.Product.Price }}</td>
+		</tr>
+		<tr>
+		  <td>Unit:</td><td>{{ purchaserequestlineitem.Product.Unit }}</td>
+		</tr>
+		<tr>
+		  <td>Product Photo:</td><td><img src='{{ purchaserequestlineitem.Product.PhotoPath }}' alt="None"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			  <a routerLink='/purchaserequestlineitem/edit/{{purchaserequestlineitem.Id}}/{{prid}}' class='btn btn-primary' title='Edit'>Edit</a>
+			  <button (click)="remove()" class='btn btn-danger' title='Delete'>Remove</button>
+			</td>
+		</tr>
+		</table>
+	</div>
+</div>

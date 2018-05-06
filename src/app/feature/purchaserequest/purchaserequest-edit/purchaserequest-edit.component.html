@@ -1,0 +1,35 @@
+<app-menu></app-menu>
+
+<div class = 'contentBox'>
+	<div class = "Box">
+	<div>
+		<h1><span id="barcode"> ---------</span>{{title}}<span id="barcode"> ----</span></h1>
+	</div>
+			<p *ngIf = '!purchaserequest'>Loading...</p>
+			<div *ngIf = 'purchaserequest'></div>
+			<div class="form-group row">
+				<input [(ngModel)]='purchaserequest.Description' name = 'Description' type="text" class="form-control col-sm-6" id="purchaserequestdescription" aria-describedby="purchaserequestdescriptionHelp" placeholder="Description">
+			</div>
+			<div class="form-group row">
+				<input [(ngModel)]='purchaserequest.Justification' name = 'Justification' type="text" class="form-control col-sm-6" id="purchaserequestjustification" aria-describedby="purchaserequestjustification Help" placeholder="Justification">
+			</div>
+			<div class="form-group row">
+				<input [(ngModel)]='purchaserequest.DateNeeded' name = 'DateNeeded' type="date" class="form-control col-sm-6" id="purchaserequestdateneeded" aria-describedby="purchaserequestphotopathHelp" placeholder="Photo URL">
+			</div>
+			<div class="form-group row">
+				<select [(ngModel)]='purchaserequest.DeliveryMode'>
+					<option [ngValue]="purchaserequest.DeliveryMode" disabled selected hidden>{{purchaserequest.DeliveryMode}}</option>
+					<option value="UPS">UPS</option>
+					<option value="FedEx">FedEx</option>
+					<option value="Pickup">Pick Up</option>
+					<option value="unknown">Unknown</option>
+				</select>
+			</div>
+			<div class="form-group row">
+				<input [(ngModel)]='purchaserequest.ReasonForRejection' name = 'ReasonForRejection' type="text" class="form-control col-sm-6" id="purchaserequestrejection" aria-describedby="purchaserequestrejectiomHelp" placeholder="Rejection Reason">
+			</div>
+			<div class='form-group'>
+				<button (click)='change()' class='btn btn-primary'>Update</button>
+			</div>
+		</div>
+	</div>

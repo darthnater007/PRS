@@ -1,0 +1,29 @@
+<app-menu></app-menu>
+<div class = 'contentBox'>
+	<div class = 'Box'>
+		<div class = "lefthalf">
+			<h1><span id="barcode"> ---------</span>{{title}}<span id="barcode"> ----</span></h1>>
+			<span class="addNew"><a routerLink='/product/create'><img id='createnew' width='30' height='30' src='assets/add-icon.png' title='Add New'>Add New</a></span>
+		</div>
+		<p *ngIf= '!products'>Loading...</p>
+			<div class='scrollbox'>
+			<table class = "table table-sm" *ngIf='products'>
+				<tr>
+					<th> Name </th>
+					<th>Vendor</th> 
+					<th>Price</th>
+					<th>Details/Edit</th> 
+				</tr>
+				<tr *ngFor = 'let p of products'>
+					<td>{{p.Name}}</td>
+					<td>{{p.Vendor.Name}}</td>
+					<td>{{p.Price}}</td>
+					<td class = 'actions'>
+						<a routerLink='/product/detail/{{p.Id}}'><img src = 'assets/details.png' width = '20' height = '20' title = 'Details'> </a>
+						<a routerLink='/product/edit/{{p.Id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
+					</td>
+				</tr>
+			</table>
+			</div>
+		</div>
+	</div>

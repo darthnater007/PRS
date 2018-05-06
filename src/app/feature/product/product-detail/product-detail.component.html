@@ -1,0 +1,38 @@
+<app-menu></app-menu>
+<div class = "contentBox">
+	<div class = "Box">
+		<div class = 'lefthalf'>
+			<h1><span id="barcode"> ---------</span>{{title}}<span id="barcode"> ----</span></h1>
+		</div>
+		<table class="table table-sm" *ngIf='product'>
+		<p *ngIf= '!product'>Loading...</p>
+		<tr>
+		  <td>Id:</td><td>{{ product.Id }}</td>
+		</tr>
+		<tr>
+		  <td>Name:</td><td>{{ product.Name }}</td>
+		</tr>
+		<tr>
+		  <td>Vendor:</td><td>{{ product.Vendor.Name }}</td>
+		</tr>
+		<tr>
+		  <td>Part Number:</td><td>{{ product.PartNumber }}</td>
+		</tr>
+		<tr>
+		  <td>Price:</td><td>{{ product.Price }}</td>
+		</tr>
+		<tr>
+		  <td>Unit:</td><td>{{ product.Unit }}</td>
+		</tr>
+		<tr>
+		  <td>Photo:</td><td><img src='{{ product.PhotoPath }}' alt="None"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			  <a routerLink='/product/edit/{{product.Id}}' class='btn btn-primary' title='Edit'>Edit</a>
+			  <button (click)="remove()" class='btn btn-danger' title='Delete'>Remove</button>
+			</td>
+		</tr>
+		</table>
+	</div>
+</div>

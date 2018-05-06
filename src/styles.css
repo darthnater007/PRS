@@ -1,1 +1,173 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+html{
+/*	background-image: url('https://images.pexels.com/photos/159627/pencils-clips-colour-pencils-foam-rubber-159627.jpeg?auto=compress&cs=tinysrgb&h=350');*/
+	background-color: #cec9d5;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	
+}
+
+#headfoot{
+	border-radius: 0px;
+	font-family: 'Cinzel', serif;
+	position: relative;
+	text-align: left;
+}
+
+#barcode{
+	font-family: 'Libre Barcode 39 Extended', serif;
+	color: #606173;
+}
+
+
+.contentBox{
+	background-image: linear-gradient(to top right,rgb(70,127,82, 0.5),rgb(87,71,134, 0.5));
+	border-radius: 20px;
+	position: absolute;
+	height: 75%;
+	width: 95%;
+	left: 50%;
+	top: 20%;
+	transform: translateY(-50%);
+	transform: translateX(-50%);
+}
+
+.Box{
+	background-image: radial-gradient( #282938 90%, #46475A);
+	border-radius: 20px;
+	box-shadow: 2px 2px 2px #282938;
+	position: relative;
+	width: 98%;
+	height: 98%;
+	margin: auto;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.addNew a{
+	color: aliceblue;
+	font-size: 4vh;
+	padding-left: 5%;
+	padding-bottom: 2%;
+	position: relative;
+}
+
+.addNew a:hover{
+	top:2px;
+	text-shadow: 0 0 3px aliceblue;
+}
+
+.actions a{
+	font-size: 3vh;
+	margin-left: 10%;
+	position: relative;
+}
+
+.actions a:hover{
+	text-decoration: none;
+	top: 2px;
+}
+
+.scrollbox{
+	background-color: #405573;
+	height: 75%;
+	width: 95%;
+	margin: auto;
+	position: relative;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border: 1px solid aliceblue;
+	border-radius: 15px;
+}
+
+.row{
+	position: relative;
+	margin-left: 10%;
+}
+
+.btn-primary{
+	font-family: 'Roboto Mono', monospace;
+	font-size: 3vh;
+	position: relative;
+	margin: auto;
+	right: 9%;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+button:hover{
+	position: relative;
+	top: 2px;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #888; 
+    border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+h1{
+	font-family: 'Cormorant Garamond', serif;
+	font-size: 4vw;
+	color: aliceblue;
+	text-shadow: 0px 0px 1px;
+	background-image: linear-gradient(to right, #2D6239, #185225, #185225, #185225 ,#2D6239);
+	text-align: center;
+	box-shadow: 2px 2px 2px  #282938;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+}
+
+table{
+	border: 1px solid aliceblue;
+	border-radius: 15px;
+}
+
+td, th{
+	font-size: 1.5vw;
+	color: aliceblue;
+	position: relative;
+	padding: 20px;
+	color: aliceblue;
+}
+
+th{
+	font-family: 'Roboto Mono', monospace;
+	background-color: #172c4a;
+}
+
+td{
+	font-family: 'Cormorant Garamond', serif;
+	background-color: #405573;
+	padding: 20px;
+}
+
+label{
+	font-family: 'Roboto Mono', monospace;
+	color: aliceblue;
+}
+

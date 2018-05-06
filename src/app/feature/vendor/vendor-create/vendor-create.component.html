@@ -1,0 +1,104 @@
+<app-menu></app-menu>
+
+<div class = 'contentBox'>
+	<div class = "Box">
+		<div>
+			<h1><span id="barcode"> ---------</span>{{title}}<span id="barcode"> ----</span></h1>
+		</div>
+		<div class="scrollbox">
+			<p *ngIf = '!vendor'>Loading...</p>
+			<div *ngIf = 'vendor'></div>
+			<div class="form-group row">
+				<label class="col-sm-2">Code: </label>
+				<input [(ngModel)]='vendor.Code' name = 'Code' type="text" class="form-control col-sm-6" id="vendorcode" aria-describedby="vendorcodeHelp" placeholder="Vendor Code">
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2">Name: </label>
+				<input [(ngModel)]='vendor.Name' name = 'Name' type="text" class="form-control col-sm-6" id="vendorname" aria-describedby="vendornameHelp" placeholder="Vendor Name">
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2">Address: </label>
+				<input [(ngModel)]='vendor.Address' name = 'Address' type="text" class="form-control col-sm-6" id="vendoraddress" aria-describedby="vendoraddressHelp" placeholder="Vendor Address">
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2">City: </label>
+				<input [(ngModel)]='vendor.City' name = 'City' type="text" class="form-control col-sm-6" id="vendorcity" aria-describedby="vendorcityHelp" placeholder="Vendor City">
+
+				<select [(ngModel)]= 'vendor.State' name="State">
+					<option value="" disabled selected>State</option>
+					<option value="AL">AL</option>
+					<option value="AK">AK</option>
+					<option value="AZ">AZ</option>
+					<option value="AR">AR</option>
+					<option value="CA">CA</option>
+					<option value="CO">CO</option>
+					<option value="CT">CT</option>
+					<option value="DE">DE</option>
+					<option value="DC">DC</option>
+					<option value="FL">FL</option>
+					<option value="GA">GA</option>
+					<option value="HI">HI</option>
+					<option value="ID">ID</option>
+					<option value="IL">IL</option>
+					<option value="IN">IN</option>
+					<option value="IA">IA</option>
+					<option value="KS">KS</option>
+					<option value="KY">KY</option>
+					<option value="LA">LA</option>
+					<option value="ME">ME</option>
+					<option value="MD">MD</option>
+					<option value="MA">MA</option>
+					<option value="MI">MI</option>
+					<option value="MN">MN</option>
+					<option value="MS">MS</option>
+					<option value="MO">MO</option>
+					<option value="MT">MT</option>
+					<option value="NE">NE</option>
+					<option value="NV">NV</option>
+					<option value="NH">NH</option>
+					<option value="NJ">NJ</option>
+					<option value="NM">NM</option>
+					<option value="NY">NY</option>
+					<option value="NC">NC</option>
+					<option value="ND">ND</option>
+					<option value="OH">OH</option>
+					<option value="OK">OK</option>
+					<option value="OR">OR</option>
+					<option value="PA">PA</option>
+					<option value="RI">RI</option>
+					<option value="SC">SC</option>
+					<option value="SD">SD</option>
+					<option value="TN">TN</option>
+					<option value="TX">TX</option>
+					<option value="UT">UT</option>
+					<option value="VT">VT</option>
+					<option value="VA">VA</option>
+					<option value="WA">WA</option>
+					<option value="WV">WV</option>
+					<option value="WI">WI</option>
+					<option value="WY">WY</option>
+				</select>
+
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2">Zip: </label>
+				<input [(ngModel)]='vendor.Zip' name = 'Zip' type="text" class="form-control col-sm-6" id="vendorzip" aria-describedby="vendorzipHelp" placeholder="Vendor Zip Code">
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2">Phone Number: </label>
+				<input [(ngModel)]='vendor.PhoneNumber' name = 'PhoneNumber' type="text" class="form-control col-sm-6" id="vendorphonenumber" aria-describedby="phoneHelp" placeholder="Vendor Phone Number">
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2">Email: </label>
+				<input [(ngModel)]='vendor.Email' name = 'Email' type="text" class="form-control col-sm-6" id="vendoremail" aria-describedby="vendoremailHelp" placeholder="Vendor Email">
+			</div>
+			<div class= "form-group row">
+				<label class='col-form-label col-sm-2' for="vendorPreapproved">PreApproved:</label>
+				<input [(ngModel)]='vendor.Preapproved' name = 'Preapproved' type="checkbox" class="form-control col-sm-6" id="vendorPreapproved" aria-describedby="preapprovedHelp" placeholder="PreApproved">
+			 </div>
+			 </div>
+			<div class='form-group row'>
+				<button (click)='create()' class='btn btn-primary'>Create</button>
+			</div>
+		</div>
+	</div>
