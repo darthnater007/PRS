@@ -1,0 +1,24 @@
+header{
+	position: absolute;
+	width: 100%;
+}
+
+#headfoot{
+	font-family: 'Cinzel', serif;
+	color: aliceblue;
+	font-size: 16px;
+	background-image: linear-gradient(#185225 80%, #669971);
+	position: relative;
+	padding-left: 5%;
+	box-shadow: 2px 2px 3px #282938;
+}
+
+#barcode{
+	font-family: 'Libre Barcode 39 Extended', serif;
+}
+
+footer{
+	position: absolute;
+	width: 100%;
+	bottom: 0%;
+}

@@ -2,32 +2,32 @@
 <div class = 'contentBox'>
 	<div class = 'Box'>
 		<div class = "lefthalf">
-			<h1><span id="barcode"> ---------</span>{{title}}<span id="barcode"> ----</span></h1>
-			<span class="addNew"><a routerLink='/user/create'><img id='createnew' width='30' height='30' src='assets/add-icon.png' title='Add New'>Add New</a></span>
+			<h1><span id="barcode"> -------------</span>{{title}}</h1>
 		</div>
 		<p *ngIf= '!users'>Loading...</p>
 		<div class = 'scrollbox'>
 		<table class = "table table-sm" *ngIf='users'>
 			<thead>
 				<tr>
-					<th>User Name</th>
-					<th>First Name</th> 
-					<th>Last Name</th>
+				 	<th><a (click)="setSortBy('UserName')" data-toggle="tooltip" title="Sort By User Name">User Name</a></th>
+					<th><a (click)="setSortBy('FirstName')" data-toggle="tooltip" title="Sort By First Name">First Name</a></th> 
+					<th><a (click)="setSortBy('LastName')" data-toggle="tooltip" title="Sort By Last Name">Last Name</a></th>
 					<th>Details/Edit</th> 
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor = 'let u of users'>
+				<tr *ngFor='let u of users | sort:sortBy'>
 					<td>{{u.UserName}}</td>
 					<td>{{u.FirstName}}</td>
 					<td>{{u.LastName}}</td>
 					<td class = 'actions'>
-						<a routerLink='/user/detail/{{u.Id}}'><img src = 'assets/details.png' title = 'Details'> </a>
-						<a routerLink='/user/edit/{{u.Id}}'><img src='assets/pencil-icon.png' title='Edit'></a>
+						<a routerLink='/user/detail/{{u.Id}}' class="btn btn-primary"><img src = 'assets/details.png' title = 'Details'> </a>
+						<a routerLink='/user/edit/{{u.Id}}' class="btn btn-primary"><img src='assets/pencil-icon.png' title='Edit'></a>
 					</td>
 				</tr>
 			</tbody>
 			</table>
 		</div>
+		<span class="addNew"><a routerLink='/user/create' class="btn btn-success"><img id='createnew' src='assets/add-icon.png' title='Add New'>Add New</a></span>
 	</div>
 </div>

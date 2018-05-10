@@ -8,6 +8,8 @@ import { UserService } from '../../../service/user.service';
 
 import { SystemService } from '../../../service/system.service';
 
+import { SortPipe } from '../../../pipe/sort.pipe';
+
 @Component({
   selector: 'app-purchaserequest-list',
   templateUrl: './purchaserequest-list.component.html',
@@ -19,6 +21,8 @@ export class PurchaserequestListComponent implements OnInit {
 	//mock login-hardcoded now for testing
 	user: User;
 	
+	sortBy: string = "Id";
+	
 constructor(private purchaserequestSvc: PurchaserequestService, private userSvc : UserService, private sysSvc: SystemService) { }
 
   ngOnInit() {
@@ -26,6 +30,7 @@ constructor(private purchaserequestSvc: PurchaserequestService, private userSvc 
     this.purchaserequestSvc.list().subscribe(prs => {
         this.purchaserequests = prs;
         console.log(prs);
+		this.populateUserName();
     });
     // mock login - hardcoded for now for testing purposes
     this.userSvc.login("darthNater007", "sixsix6")
@@ -37,6 +42,17 @@ constructor(private purchaserequestSvc: PurchaserequestService, private userSvc 
             console.log("SysSvc:", this.sysSvc.debug);   
         }
     })
+  }
+	
+	populateUserName(): void {
+    for (let pr of this.purchaserequests) {
+      pr.UserName = pr.User.UserName;
+    }
+	}
+	
+	setSortBy(column: string): void {
+	console.log(column);
+    this.sortBy = column;
   }
 
 }

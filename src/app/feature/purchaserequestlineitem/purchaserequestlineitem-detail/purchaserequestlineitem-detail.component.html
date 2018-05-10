@@ -2,37 +2,37 @@
 <div class = "contentBox">
 	<div class = "Box">
 		<div class = 'lefthalf'>
-			<h1><span id="barcode"> ---------</span>{{title}}<span id="barcode"> ----</span></h1>
+			<h1><span id="barcode"> -------------</span>{{title}}</h1>
 		</div>
-		<table class="table table-sm" *ngIf='purchaserequestlineitem'>
-		<p *ngIf= '!purchaserequestlineitem'>Loading...</p>
-		<tr>
-		  <td>Id:</td><td>{{ purchaserequestlineitem.Id }}</td>
-		</tr>
-		<tr>
-		  <td>User:</td><td>{{ purchaserequestlineitem.PurchaseRequest.User.UserName }}</td>
-		</tr>
-		<tr>
-		  <td>Description:</td><td>{{ purchaserequestlineitem.PurchaseRequest.Description }}</td>
-		</tr>
-		<tr>
-		  <td>Product:</td><td>{{ purchaserequestlineitem.Product.Name }}</td>
-		</tr>
-		<tr>
-		  <td>Price:</td><td>{{ purchaserequestlineitem.Product.Price }}</td>
-		</tr>
-		<tr>
-		  <td>Unit:</td><td>{{ purchaserequestlineitem.Product.Unit }}</td>
-		</tr>
-		<tr>
-		  <td>Product Photo:</td><td><img src='{{ purchaserequestlineitem.Product.PhotoPath }}' alt="None"></td>
-		</tr>
-		<tr>
-			<td colspan="2">
+		<div class="scrollbox">
+			<table class="table table-sm" *ngIf='purchaserequestlineitem'>
+				<p *ngIf= '!purchaserequestlineitem'>Loading...</p>
+				<tr>
+				  <th>Id:</th><td>{{ purchaserequestlineitem.Id }}</td>
+				</tr>
+				<tr>
+				  <th>User:</th><td>{{ purchaserequestlineitem.PurchaseRequest.User.UserName }}</td>
+				</tr>
+				<tr>
+				  <th>Description:</th><td>{{ purchaserequestlineitem.PurchaseRequest.Description }}</td>
+				</tr>
+				<tr>
+				  <th>Product:</th><td>{{ purchaserequestlineitem.Product.Name }}</td>
+				</tr>
+				<tr>
+				  <th>Price:</th><td>{{ purchaserequestlineitem.Product.Price }}</td>
+				</tr>
+				<tr>
+				  <th>Unit:</th><td>{{ purchaserequestlineitem.Product.Unit }}</td>
+				</tr>
+				<tr>
+				  <th>Product Photo:</th><td><img src='{{ purchaserequestlineitem.Product.PhotoPath }}' alt="None"></td>
+				</tr>
+			</table>
+		</div>
+		<div *ngIf='purchaserequestlineitem' class="row">
 			  <a routerLink='/purchaserequestlineitem/edit/{{purchaserequestlineitem.Id}}/{{prid}}' class='btn btn-primary' title='Edit'>Edit</a>
 			  <button (click)="remove()" class='btn btn-danger' title='Delete'>Remove</button>
-			</td>
-		</tr>
-		</table>
+		</div>
 	</div>
 </div>

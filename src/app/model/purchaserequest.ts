@@ -3,6 +3,7 @@ import { User } from '@model/user';
 export class Purchaserequest {
 	Id: number;
 	User: User;
+	UserName: string;
 	Description: string;
 	Justification: string;
 	DateNeeded: Date;

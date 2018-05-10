@@ -3,6 +3,7 @@ import { Vendor } from './vendor';
 export class Product {
 	Id: number;
 	Vendor: Vendor;
+	VendorName: string;
 	PartNumber: string;
 	Name: string;
 	Price: number;

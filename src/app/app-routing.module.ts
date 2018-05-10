@@ -24,6 +24,9 @@ import { PurchaserequestListComponent } from './feature/purchaserequest/purchase
 import { PurchaserequestCreateComponent }  from './feature/purchaserequest/purchaserequest-create/purchaserequest-create.component';
 import {PurchaserequestDetailComponent } from './feature/purchaserequest/purchaserequest-detail/purchaserequest-detail.component';
 import { PurchaserequestEditComponent } from './feature/purchaserequest/purchaserequest-edit/purchaserequest-edit.component';
+import { PurchaserequestReviewComponent } from './feature/purchaserequest/purchaserequest-review/purchaserequest-review.component';
+import { PurchaserequestApprovalComponent } from './feature/purchaserequest/purchaserequest-approval/purchaserequest-approval.component';
+
 import { PurchaserequestlineitemCreateComponent } from './feature/purchaserequestlineitem/purchaserequestlineitem-create/purchaserequestlineitem-create.component';
 import { PurchaserequestlineitemEditComponent } from './feature/purchaserequestlineitem/purchaserequestlineitem-edit/purchaserequestlineitem-edit.component';
 import { PurchaserequestlineitemDetailComponent } from './feature/purchaserequestlineitem/purchaserequestlineitem-detail/purchaserequestlineitem-detail.component';
@@ -57,13 +60,15 @@ const routes: Routes = [
 	{path: 'purchaserequest/edit/:id', component: PurchaserequestEditComponent},
 	{path: 'purchaserequest/detail/:id', component: PurchaserequestDetailComponent},
 	{path: 'purchaserequest/remove/:id', component: PurchaserequestDetailComponent},
+	{path: 'purchaserequest/review/:id', component:  PurchaserequestReviewComponent},
+	{path: 'purchaserequest/approval/:id', component: PurchaserequestApprovalComponent},
 	
 	{path: 'purchaserequestlineitem/create/:id', component: PurchaserequestlineitemCreateComponent},
 	{path: 'purchaserequestlineitem/edit/:id/:prid', component: PurchaserequestlineitemEditComponent},
 	{path: 'purchaserequestlineitem/detail/:id/:prid', component: PurchaserequestlineitemDetailComponent},
 	{path: 'purchaserequestlineitem/remove/:id', component: PurchaserequestlineitemDetailComponent},
 	
-	{path:'**', component: HomeComponent}
+	{path:'**', component: UserLoginComponent}
 ];
 
 @NgModule({

@@ -10,20 +10,18 @@
 					<tr>
 						<th><a (click)="setSortBy('UserName')" data-toggle="tooltip" title="Sort By User Name">User Name</a></th> 
 						<th><a (click)="setSortBy('Description')" data-toggle="tooltip" title="Sort By Description">Description</a></th> 
-						<th><a (click)="setSortBy('DateNeeded')" data-toggle="tooltip" title="Sort By Date Needed">Status</a></th>
-						<th>Details/Edit</th> 
+						<th><a (click)="setSortBy('DateNeeded')" data-toggle="tooltip" title="Sort By Date Needed">Date Needed</a></th>
+						<th>Go To Approval</th> 
 					</tr>
 					<tr *ngFor = 'let pr of purchaserequests | sort:sortBy'>
 						<td>{{pr.User.UserName}}</td>
 						<td>{{pr.Description}}</td>
-						<td>{{pr.Status}}</td>
+						<td>{{pr.DateNeeded}}</td>
 						<td class = 'actions'>
-							<a routerLink='/purchaserequest/detail/{{pr.Id}}' class="btn btn-primary"><img src = 'assets/details.png'  title = 'Details'> </a>
-							<a routerLink='/purchaserequest/edit/{{pr.Id}}' class="btn btn-primary"><img src='assets/pencil-icon.png'  title='Edit'></a>
+							<a routerLink='/purchaserequest/approval/{{pr.Id}}' class='btn btn-primary' title='Approval Page'><img src='assets/review.png'></a>	
 						</td>
 					</tr>
 				</table>
 			</div>
-			<span class="addNew"><a routerLink='/purchaserequest/create' class="btn btn-success"><img id='createnew' src='assets/add-icon.png' title='Add New'>Add New</a></span>
 		</div>
 	</div>

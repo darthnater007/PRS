@@ -36,6 +36,22 @@ prliList(id): Observable<Purchaserequestlineitem[]>{
 	return this.http.get(urlPrliList + '?id=' + id) as Observable<Purchaserequestlineitem[]>;
 }
 	
-constructor(private http: HttpClient) { }
+submit(purchaserequest: Purchaserequest): Observable<any>{
+	return this.http.post(url + "Submit", purchaserequest) as Observable<any>;
+}
+	
+getReview(id): Observable<any>{
+	return this.http.get(url + 'GetRequestReview?id='+ id + '&status=review');
+}
+
+approve(purchaserequest: Purchaserequest): Observable<any>{
+	return this.http.post(url + "Approve", purchaserequest) as Observable<any>;
+}
+	
+reject(purchaserequest: Purchaserequest): Observable<any>{
+	return this.http.post(url + "Reject", purchaserequest) as Observable<any>;
+}
+	
+constructor(private http: HttpClient) { } 
 
 }

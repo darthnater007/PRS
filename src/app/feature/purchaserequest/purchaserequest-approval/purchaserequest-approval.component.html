@@ -35,7 +35,6 @@
 		</div>
 		<div class="addLineRow">
 			<h3 class="lineitem">Line Items:</h3>
-			<span class="addNew"><a routerLink='/purchaserequestlineitem/create/{{prID}}' class="btn btn-success"><img id='createnew' src='assets/add-icon.png' title='Add New Line Item'>Add New</a></span>
 		</div>
 			<div class="scrollbox">
 				<table class="table table-sm" *ngIf="prlis">
@@ -43,27 +42,29 @@
 						<th>Product</th>
 						<th>Price</th>
 						<th>Quantity</th>
-						<th>Details/Edit</th>
+						<th>Details</th>
 					</thead>
 					<tbody>
 						<tr *ngFor = 'let prli of prlis'>
 						<td>{{ prli.Product.Name }}</td>
-						<td>${{ prli.Product.Price }}</td>
+						<td>{{ prli.Product.Price  | currency}}</td>
 						<td>{{ prli.Quantity }}</td>
 						<td class="actions">
 							<a routerLink='/purchaserequestlineitem/detail/{{prli.Id}}/{{prID}}' class="btn btn-primary"><img src = 'assets/details.png' title = 'Details'> </a>
-							<a routerLink='/purchaserequestlineitem/edit/{{prli.Id}}/{{prID}}' class="btn btn-primary"><img src='assets/pencil-icon.png' title='Edit'></a>
-							<button (click)="removeLine(prli.Id)" class='btn btn-danger' title='Delete Purchase Request'><img src='assets/delete.png'></button>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<h3 *ngIf="purchaserequest">Purchase Request Total:  {{ purchaserequest.Total | currency}}</h3>
+		<h3 *ngIf="purchaserequest">Total:  {{ purchaserequest.Total | currency}}</h3>
 		<div *ngIf='prlis' class="row">
-			<button (click)="submit()" class='btn btn-success' title='Submit Purchase Request'>Submit</button>	
-			<a routerLink='/purchaserequest/edit/{{prID}}' class='btn btn-primary' title='Edit Purchase Request'>Edit</a>
-			<button (click)="remove()" class='btn btn-danger' title='Delete Purchase Request'>Remove</button>
+			
+			<button (click)="approve()" class='btn btn-success' title='Accept'><img src='assets/accept.png'>Approve</button>
+			<span>
+			<button *ngIf='rejectionReason.length == 0' class='btn btn-dark' title='Fill out Rejection Reason to Reject'><img src='assets/reject.png'>Reject </button>	
+			<button *ngIf='rejectionReason.length > 0' (click)="reject()" class='btn btn-danger' title='Reject'><img src='assets/reject.png'>Reject</button>
+			<input class="col-sm-6" [(ngModel)]='rejectionReason' id='rejectionReason' name='rejectionReason' placeholder="Rejection Reason" type="text">
+			</span>
 		</div>
 	</div>
 </div>

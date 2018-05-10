@@ -14,7 +14,7 @@ import { UserService } from '../../../service/user.service';
 })
 export class PurchaserequestEditComponent implements OnInit {
 
-title: string = "Edit Purchaserequest";
+	title: string = "Edit Purchase Request";
 	
 	id: string;
 	resp: any;

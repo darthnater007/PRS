@@ -2,28 +2,28 @@
 <div class = 'contentBox'>
 	<div class = 'Box'>
 		<div class = "lefthalf">
-			<h1><span id="barcode"> ---------</span>{{title}}<span id="barcode"> ----</span></h1>
-			<span class="addNew"><a routerLink='/vendor/create'><img id='createnew' width='30' height='30' src='assets/add-icon.png' title='Add New'>Add New</a></span>
+			<h1><span id="barcode"> -------------</span>{{title}}</h1>
 		</div>
 		<div class='scrollbox'>
 		<p *ngIf= '!vendors'>Loading...</p>
 			<table class = "table table-sm" *ngIf='vendors'>
 				<tr>
-					<th> Name </th>
-					<th>City</th> 
-					<th>State</th>
+					<th><a (click)="setSortBy('Name')" data-toggle="tooltip" title="Sort By Name">Name</a></th>
+					<th><a (click)="setSortBy('City')" data-toggle="tooltip" title="Sort By Name">City</a></th> 
+					<th><a (click)="setSortBy('State')" data-toggle="tooltip" title="Sort By Name">State</a></th>
 					<th>Details/Edit</th> 
 				</tr>
-				<tr *ngFor = 'let v of vendors'>
+				<tr *ngFor = 'let v of vendors | sort:sortBy'>
 					<td>{{v.Name}}</td>
 					<td>{{v.City}}</td>
 					<td>{{v.State}}</td>
 					<td class = 'actions'>
-						<a routerLink='/vendor/detail/{{v.Id}}'><img src = 'assets/details.png' width = '20' height = '20' title = 'Details'> </a>
-						<a routerLink='/vendor/edit/{{v.Id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
+						<a routerLink='/vendor/detail/{{v.Id}}' class="btn btn-primary"><img src = 'assets/details.png' title = 'Details'> </a>
+						<a routerLink='/vendor/edit/{{v.Id}}' class="btn btn-primary"><img src='assets/pencil-icon.png'  title='Edit'></a>
 					</td>
 				</tr>
 			</table>
 			</div>
+			<span class="addNew"><a routerLink='/vendor/create' class="btn btn-success"><img id='createnew' src='assets/add-icon.png' title='Add New'>Add New</a></span>
 		</div>
 	</div>

@@ -3,7 +3,7 @@
 <div class = 'contentBox'>
 	<div class = "Box">
 	<div>
-		<h1><span id="barcode"> ---------</span>{{title}}<span id="barcode"> ----</span></h1>
+		<h1><span id="barcode"> -------------</span>{{title}}</h1>
 	</div>
 		<div class="scrollbox">
 			<p *ngIf = '!user'>Loading...</p>
@@ -40,8 +40,8 @@
 				<label class='col-form-label col-sm-2' for="userReviewer">Reviewer:</label>
 				<input [(ngModel)]='user.Reviewer' name = 'Reviewer' type="checkbox" class="form-control col-sm-6" id="userReviewer" aria-describedby="reviewerHelp" placeholder="Reviewer">
 			</div>
-			</div>
-		<div class='form-group row'>
+		</div>
+		<div class='row'>
 			<button (click)='create()' class='btn btn-primary'>Create</button>
 		</div>
 	</div>

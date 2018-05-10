@@ -7,7 +7,8 @@
       "@feature/*" : ["app/feature/*"],
       "@model/*" : ["app/model/*"],
       "@svc/*" : ["app/service/*"],
-      "@util/*" : ["app/util/*"]
+      "@util/*" : ["app/util/*"],
+		"@pipe/*" : ["app/pipe/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

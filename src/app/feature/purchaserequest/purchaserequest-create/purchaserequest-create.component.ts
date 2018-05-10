@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Purchaserequest } from '../../../model/purchaserequest';
 import { PurchaserequestService } from '../../../service/purchase-request.service';
 import { User } from '../../../model/user';
-import { UserService } from '../../../service/user.service';
+import { SystemService } from '../../../service/system.service';
 
 @Component({
   selector: 'app-purchaserequest-create',
@@ -11,25 +11,30 @@ import { UserService } from '../../../service/user.service';
   styleUrls: ['./purchaserequest-create.component.css']
 })
 export class PurchaserequestCreateComponent implements OnInit {
-	title: string = "Create New Purchaserequests";
+	title: string = "Create New Purchase Request";
 	resp: any;
 	purchaserequest: Purchaserequest = new Purchaserequest(0, null, '', '', null, '', '', 0, null, '');
-	users: User[];
+	user: User;
 	
 create() {
 	console.log('create a purchaserequest...');
-	console.log (this.purchaserequest);
 	this.purchaserequestSvc.create(this.purchaserequest).subscribe(resp => {
 		this.resp = resp;
+		console.log (this.resp);
 		console.log("purchaserequest-Create: ", this.resp);
-		this.router.navigate(['/purchaserequest/list']);
+		this.router.navigate(['/purchaserequest/detail/' + this.resp]);
 		});
 }
 
-constructor(private purchaserequestSvc: PurchaserequestService, private userSvc: UserService, private router: Router) { }
+constructor(private purchaserequestSvc: PurchaserequestService, private sysSvc: SystemService, private router: Router) { }
 
   ngOnInit() {
-	this.userSvc.list().subscribe(users => this.users = users);
+	  if(this.sysSvc.data.user.loggedIn){
+		this.user = this.sysSvc.data.user.instance;
+		this.purchaserequest.User = this.user;
+	}else{
+		console.error("User not logged in.");
+	}
   }
 
 }

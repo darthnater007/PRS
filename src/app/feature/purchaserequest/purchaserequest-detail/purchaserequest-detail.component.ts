@@ -5,6 +5,7 @@ import { PurchaserequestService } from '../../../service/purchase-request.servic
 import { Purchaserequest } from '../../../model/purchaserequest';
 
 import { Purchaserequestlineitem } from '../../../model/purchaserequestlineitem';
+import { PurchaserequestlineitemService } from '../../../service/purchaserequestlineitem.service';
 
 @Component({
   selector: 'app-purchaserequest-detail',
@@ -18,7 +19,7 @@ export class PurchaserequestDetailComponent implements OnInit {
 	prlis: Purchaserequestlineitem[];
 	prID: number;
 
-constructor(private purchaserequestSvc: PurchaserequestService, private router: Router, private route: ActivatedRoute) { }
+constructor(private purchaserequestSvc: PurchaserequestService, private prliSvc: PurchaserequestlineitemService, private router: Router, private route: ActivatedRoute) { }
 
 	ngOnInit() {
 		this.route.params.subscribe(parms => {
@@ -43,9 +44,20 @@ this.purchaserequestSvc.prliList(this.prID).subscribe(prlis => {
 	
 	remove(): void {
 		this.purchaserequestSvc.remove(this.purchaserequest.Id).subscribe(res => {
-		console.log(res);
 		this.router.navigateByUrl("/purchaserequest/list");
 			});
+	}
+	
+removeLine(prliID: number): void {
+		this.prliSvc.remove(prliID).subscribe(res => {
+		this.ngOnInit();
+		})
+	}
+	
+	submit(): void {
+		this.purchaserequestSvc.submit(this.purchaserequest).subscribe(res => {
+			this.router.navigateByUrl("/purchaserequest/list");
+		});
 	}
 
 }
