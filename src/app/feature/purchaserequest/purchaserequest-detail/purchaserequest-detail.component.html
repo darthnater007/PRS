@@ -33,37 +33,53 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="addLineRow">
+		<div *ngIf='purchaserequest' class="addLineRow">
 			<h3 class="lineitem">Line Items:</h3>
-			<span class="addNew"><a routerLink='/purchaserequestlineitem/create/{{prID}}' class="btn btn-success"><img id='createnew' src='assets/add-icon.png' title='Add New Line Item'>Add New</a></span>
+			<span class="addNew"><a *ngIf='purchaserequest.Status != "Approved"' (click)='changeStatusNew(purchaserequest.Id)' routerLink='/purchaserequestlineitem/create/{{prID}}' class="btn btn-success"><img id='createnew' src='assets/add-icon.png' title='Add New Line Item'>Add New</a></span>
+			<span class="addNew"><a *ngIf='purchaserequest.Status == "Approved"' class="btn btn-dark hidden"><img id='createnew' src='assets/delete.png' title='Can Not Add Line Items To Approved Request'>Can Not Add</a></span>
 		</div>
 			<div class="scrollbox">
-				<table class="table table-sm" *ngIf="prlis">
+				<table class="table table-sm" *ngIf="prlis && purchaserequest">
 					<thead>
-						<th>Product</th>
-						<th>Price</th>
-						<th>Quantity</th>
-						<th>Details/Edit</th>
+						<th><a (click)="setSortBy('ProductName')" data-toggle="tooltip" title="Sort By Product Name">Product</a></th> 
+						<th><a (click)="setSortBy('ProductPrice')" data-toggle="tooltip" title="Sort By Product Price">Price</a></th> 
+						<th><a (click)="setSortBy('Quantity')" data-toggle="tooltip" title="Sort By Product Name">Quantity</a></th> 
+						<th>Details/Edit/Remove</th>
 					</thead>
 					<tbody>
-						<tr *ngFor = 'let prli of prlis'>
+						<td *ngIf='prlis.length == 0'>No Line Items On File</td>
+						<tr *ngFor = 'let prli of prlis | sort:sortBy'>
 						<td>{{ prli.Product.Name }}</td>
 						<td>${{ prli.Product.Price }}</td>
 						<td>{{ prli.Quantity }}</td>
 						<td class="actions">
 							<a routerLink='/purchaserequestlineitem/detail/{{prli.Id}}/{{prID}}' class="btn btn-primary"><img src = 'assets/details.png' title = 'Details'> </a>
-							<a routerLink='/purchaserequestlineitem/edit/{{prli.Id}}/{{prID}}' class="btn btn-primary"><img src='assets/pencil-icon.png' title='Edit'></a>
-							<button (click)="removeLine(prli.Id)" class='btn btn-danger' title='Delete Purchase Request'><img src='assets/delete.png'></button>
+							
+							<a *ngIf='purchaserequest.Status != "Approved"' (click)='changeStatusNew()' routerLink='/purchaserequestlineitem/edit/{{prli.Id}}/{{prID}}' class="btn btn-primary"><img src='assets/pencil-icon.png' title='Edit'></a>
+							
+							<a *ngIf='purchaserequest.Status == "Approved"' class="btn btn-dark"><img src='assets/pencil-icon.png' title='Can Not Edit Approved Request'></a>
+							
+							<a *ngIf='purchaserequest.Status != "Approved"' (click)="changeStatusNew(purchaserequest.Id);removeLine(prli.Id)" class='btn btn-danger' title='Delete Line Item'><img src='assets/delete.png'></a>
+							<a *ngIf='purchaserequest.Status == "Approved"' class='btn btn-dark' title='Can Not Delete Line Item On Approved Request'><img src='assets/delete.png'></a>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<h3 *ngIf="purchaserequest">Purchase Request Total:  {{ purchaserequest.Total | currency}}</h3>
-		<div *ngIf='prlis' class="row">
-			<button (click)="submit()" class='btn btn-success' title='Submit Purchase Request'>Submit</button>	
-			<a routerLink='/purchaserequest/edit/{{prID}}' class='btn btn-primary' title='Edit Purchase Request'>Edit</a>
-			<button (click)="remove()" class='btn btn-danger' title='Delete Purchase Request'>Remove</button>
+		<div *ngIf='prlis && purchaserequest' class="row">
+			<button *ngIf='purchaserequest.Status == "New" && prlis.length == 0' class='btn btn-dark' title='Add Line Items To Submit'>Submit</button>
+			<button *ngIf='purchaserequest.Status == "New" && prlis.length > 0' (click)="submit()" class='btn btn-success' title='Submit Purchase Request'>Submit</button>
+			<button *ngIf='purchaserequest.Status == "Review"' class='btn btn-dark' title='Already Submitted'>Submit</button>
+			<button *ngIf='purchaserequest.Status == "Rejected"' class='btn btn-dark' title='Edit The Request To Re-Submit'>Submit</button>
+			<button *ngIf='purchaserequest.Status == "Approved"' class='btn btn-dark' title='Already Approved'>Submit</button>
+				
+			<button *ngIf='purchaserequest.Status != "Approved"' (click)="changeStatusNew()" routerLink='/purchaserequest/edit/{{prID}}' class='btn btn-primary' title='Edit Purchase Request'>Edit</button>
+			<button *ngIf='purchaserequest.Status == "Approved"' class='btn btn-dark' title='Already Approved'>Edit</button>
+			
+			
+			<button *ngIf='prlis.length == 0' (click)="remove()" class='btn btn-danger' title='Delete Purchase Request'>Remove</button>
+			<button *ngIf='prlis.length > 0' class='btn btn-dark' title='Delete Line Items To Delete Request'>Remove</button>
 		</div>
 	</div>
 </div>

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../service/user.service';
 import { User } from '../../../model/user';
 
+import { SystemService } from '../../../service/system.service';
+
 import { SortPipe } from '../../../pipe/sort.pipe';
 
 @Component({
@@ -12,17 +14,24 @@ import { SortPipe } from '../../../pipe/sort.pipe';
 })
 export class UserListComponent implements OnInit {
 	users : User[];
-	title : string =  'Users On File';
+	user : User;
 	
+	title : string =  'Users On File';
 	sortBy: string = "Id";
 	
-constructor(private userSvc: UserService) { }
+constructor(private userSvc: UserService, private sysSvc: SystemService) { }
 
   ngOnInit() {
 		this.userSvc.list().subscribe(users => {
 			console.log(users);
 			this.users = users;
-		})
+		});
+	  
+	  if(this.sysSvc.data.user.loggedIn){
+			this.user = this.sysSvc.data.user.instance;
+		}else{
+			console.error("User not logged in.");
+		}
   }
 	
 	setSortBy(column: string): void {

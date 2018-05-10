@@ -7,6 +7,10 @@ export class Purchaserequestlineitem {
 	Product: Product;
 	Quantity: number;
 	
+	//for sorting child elements in prli list
+	ProductName: string;
+	ProductPrice: number;
+	
 	constructor(Id: number = null, PurchaseRequest: Purchaserequest = null, Product: Product = null, Quantity: number = null){
 		this.Id = Id;
 		this.PurchaseRequest = PurchaseRequest;

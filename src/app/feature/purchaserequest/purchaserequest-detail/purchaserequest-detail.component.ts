@@ -17,9 +17,11 @@ export class PurchaserequestDetailComponent implements OnInit {
 	title: string = "Purchase Request Details";
 	purchaserequest: Purchaserequest;
 	prlis: Purchaserequestlineitem[];
+	
 	prID: number;
+	sortBy: string = 'Id';
 
-constructor(private purchaserequestSvc: PurchaserequestService, private prliSvc: PurchaserequestlineitemService, private router: Router, private route: ActivatedRoute) { }
+	constructor(private purchaserequestSvc: PurchaserequestService, private prliSvc: PurchaserequestlineitemService, private router: Router, private route: ActivatedRoute) { }
 
 	ngOnInit() {
 		this.route.params.subscribe(parms => {
@@ -28,17 +30,16 @@ constructor(private purchaserequestSvc: PurchaserequestService, private prliSvc:
 			this.getPurchaserequestById(id);
 		});
 		
-		console.log('Getting list of prlis...');
-this.purchaserequestSvc.prliList(this.prID).subscribe(prlis => {
-        this.prlis = prlis;
-        console.log(prlis);
-    });
+		this.purchaserequestSvc.prliList(this.prID).subscribe(prlis => {
+        	this.prlis = prlis;
+			this.populateProductName();
+			this.populateProductPrice();
+    	});
 	}
 		
 	getPurchaserequestById(id){
 	this.purchaserequestSvc.get(id).subscribe (purchaserequests => {
-		this.purchaserequest = purchaserequests.length > 0 ? purchaserequests[0] : null;
-		console.log("purchaserequest: " + this.purchaserequest); 
+		this.purchaserequest = purchaserequests.length > 0 ? purchaserequests[0] : null; 
 		});
 	}
 	
@@ -58,6 +59,30 @@ removeLine(prliID: number): void {
 		this.purchaserequestSvc.submit(this.purchaserequest).subscribe(res => {
 			this.router.navigateByUrl("/purchaserequest/list");
 		});
+	}
+	
+	changeStatusNew(prID: number): void{
+		this.purchaserequest.Status = "New";
+		this.purchaserequestSvc.change(this.purchaserequest).subscribe();
+		this.purchaserequest.ReasonForRejection = "";
+		this.purchaserequestSvc.change(this.purchaserequest).subscribe();
+	}
+	
+	populateProductName(): void {
+    	for (let prli of this.prlis) {
+    		prli.ProductName = prli.Product.Name;
+    	}
+	}
+	
+	populateProductPrice(): void {
+    	for (let prli of this.prlis) {
+			prli.ProductPrice = prli.Product.Price;
+    	}
+	}
+	
+	setSortBy(column: string): void {
+		console.log(column);
+    	this.sortBy = column;
 	}
 
 }

@@ -10,16 +10,22 @@
 					<tr>
 						<th><a (click)="setSortBy('UserName')" data-toggle="tooltip" title="Sort By User Name">User Name</a></th> 
 						<th><a (click)="setSortBy('Description')" data-toggle="tooltip" title="Sort By Description">Description</a></th> 
-						<th><a (click)="setSortBy('DateNeeded')" data-toggle="tooltip" title="Sort By Date Needed">Status</a></th>
+						<th><a (click)="setSortBy('Status')" data-toggle="tooltip" title="Sort By Date Needed">Status</a></th>
 						<th>Details/Edit</th> 
 					</tr>
 					<tr *ngFor = 'let pr of purchaserequests | sort:sortBy'>
 						<td>{{pr.User.UserName}}</td>
 						<td>{{pr.Description}}</td>
-						<td>{{pr.Status}}</td>
+						<td *ngIf='pr.Status == "Approved"' style="color: lightgreen;">{{pr.Status}}</td>
+						<td *ngIf='pr.Status == "Rejected"' style="color: lightcoral;">{{pr.Status}}</td>
+						<td *ngIf='pr.Status == "New"' style="color: lightblue;">{{pr.Status}}</td>
+						<td *ngIf='pr.Status == "Review"'>{{pr.Status}}</td>
 						<td class = 'actions'>
 							<a routerLink='/purchaserequest/detail/{{pr.Id}}' class="btn btn-primary"><img src = 'assets/details.png'  title = 'Details'> </a>
-							<a routerLink='/purchaserequest/edit/{{pr.Id}}' class="btn btn-primary"><img src='assets/pencil-icon.png'  title='Edit'></a>
+							<a *ngIf='pr.Status == "Approved"' class="btn btn-dark"><img src='assets/pencil-icon.png'  title='Can Not Edit An Approved Request'></a>
+							<a *ngIf='pr.Status == "Rejected"' routerLink='/purchaserequest/edit/{{pr.Id}}' class="btn btn-danger"><img src='assets/pencil-icon.png'  title='Rejected'></a>
+							<a *ngIf='pr.Status !== "Approved" && pr.Status !== "Rejected"  && user.UserName != pr.User.UserName' class="btn btn-dark"><img src='assets/pencil-icon.png'  title='Can Not Edit Another Employee Request'></a>
+							<a *ngIf='pr.Status !== "Approved" && pr.Status !== "Rejected"  && user.UserName == pr.User.UserName' routerLink='/purchaserequest/edit/{{pr.Id}}' class="btn btn-primary"><img src='assets/pencil-icon.png'  title='Edit'></a>
 						</td>
 					</tr>
 				</table>

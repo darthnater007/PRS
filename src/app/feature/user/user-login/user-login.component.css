@@ -7,7 +7,8 @@ header{
 	font-family: 'Cinzel', serif;
 	color: aliceblue;
 	font-size: 16px;
-	background-image: linear-gradient(#185225 80%, #669971);
+	background-image: none;
+	background-color: #606173;
 	position: relative;
 	padding-left: 5%;
 	box-shadow: 2px 2px 3px #282938;

@@ -22,7 +22,8 @@
 					<td>{{u.LastName}}</td>
 					<td class = 'actions'>
 						<a routerLink='/user/detail/{{u.Id}}' class="btn btn-primary"><img src = 'assets/details.png' title = 'Details'> </a>
-						<a routerLink='/user/edit/{{u.Id}}' class="btn btn-primary"><img src='assets/pencil-icon.png' title='Edit'></a>
+						<a *ngIf='user.Admin == true || user.UserName == u.UserName' routerLink='/user/edit/{{u.Id}}' class="btn btn-primary"><img src='assets/pencil-icon.png' title='Edit'></a>
+						<a *ngIf='user.Admin == false &&  user.UserName != u.UserName' class="btn btn-dark"><img src='assets/pencil-icon.png' title='Only An Admin Can Edit Another User'></a>
 					</td>
 				</tr>
 			</tbody>

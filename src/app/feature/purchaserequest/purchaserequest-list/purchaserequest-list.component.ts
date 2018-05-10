@@ -25,29 +25,23 @@ export class PurchaserequestListComponent implements OnInit {
 	
 constructor(private purchaserequestSvc: PurchaserequestService, private userSvc : UserService, private sysSvc: SystemService) { }
 
-  ngOnInit() {
-    console.log('Getting list of prs...');
-    this.purchaserequestSvc.list().subscribe(prs => {
-        this.purchaserequests = prs;
-        console.log(prs);
-		this.populateUserName();
-    });
-    // mock login - hardcoded for now for testing purposes
-    this.userSvc.login("darthNater007", "sixsix6")
-      .subscribe(users => {
-        if(users.length > 0) {
-            this.user = users[0];
-            this.sysSvc.data.user.instance = this.user;
-            this.sysSvc.data.user.loggedIn = true;
-            console.log("SysSvc:", this.sysSvc.debug);   
-        }
-    })
-  }
+	ngOnInit() {
+		this.purchaserequestSvc.list().subscribe(prs => {
+        	this.purchaserequests = prs;
+			this.populateUserName();
+    	});
+	  
+		if(this.sysSvc.data.user.loggedIn){
+			this.user = this.sysSvc.data.user.instance;
+		}else{
+			console.error("User not logged in.");
+		}
+	}
 	
 	populateUserName(): void {
-    for (let pr of this.purchaserequests) {
-      pr.UserName = pr.User.UserName;
-    }
+    	for (let pr of this.purchaserequests) {
+    		pr.UserName = pr.User.UserName;
+    	}
 	}
 	
 	setSortBy(column: string): void {
