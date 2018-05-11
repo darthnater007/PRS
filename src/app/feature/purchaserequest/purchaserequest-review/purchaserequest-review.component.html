@@ -6,7 +6,7 @@
 		</div>
 		<div class='scrollbox'>
 			<p *ngIf= '!purchaserequests'>Loading...</p>
-				<table class = "table table-sm" *ngIf='purchaserequests'>
+				<table class = "table table-sm" *ngIf='purchaserequests && user'>
 					<tr>
 						<th><a (click)="setSortBy('UserName')" data-toggle="tooltip" title="Sort By User Name">User Name</a></th> 
 						<th><a (click)="setSortBy('Description')" data-toggle="tooltip" title="Sort By Description">Description</a></th> 
@@ -18,7 +18,8 @@
 						<td>{{pr.Description}}</td>
 						<td>{{pr.DateNeeded}}</td>
 						<td class = 'actions'>
-							<a routerLink='/purchaserequest/approval/{{pr.Id}}' class='btn btn-primary' title='Approval Page'><img src='assets/review.png'></a>	
+							<a *ngIf='user.Reviewer == true' routerLink='/purchaserequest/approval/{{pr.Id}}' class='btn btn-primary' title='Approval Page'><img src='assets/review.png'></a>	
+							<a *ngIf='user.Reviewer == false' class="btn btn-dark" title='You Are Not Authorized for Reviews'><img src='assets/review.png'></a>
 						</td>
 					</tr>
 				</table>

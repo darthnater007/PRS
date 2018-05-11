@@ -10,8 +10,12 @@
 h3{
 	color: aliceblue;
 	font-size: 5vh;
-	font-family: 'Cormorant Garamond', serif;
+	font-family: 'Raleway', serif;
 	margin-left: 10%;
+}
+
+.moneyText{
+	font-family: 'Roboto Mono', serif;
 }
 
 th{

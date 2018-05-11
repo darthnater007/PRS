@@ -56,7 +56,7 @@
 				</tbody>
 			</table>
 		</div>
-		<h3 *ngIf="purchaserequest">Total:  {{ purchaserequest.Total | currency}}</h3>
+		<h3 *ngIf="purchaserequest">Total:  <span class="moneyText">{{ purchaserequest.Total | currency}}</span></h3>
 		<div *ngIf='prlis' class="row">
 			
 			<button (click)="approve()" class='btn btn-success' title='Accept'><img src='assets/accept.png'>Approve</button>

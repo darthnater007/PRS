@@ -24,19 +24,22 @@
 						<td>{{ purchaserequest.User.UserName }}</td>
 						<td>{{ purchaserequest.Description }}</td>
 						<td>{{ purchaserequest.Justification }}</td>
-						<td>{{ purchaserequest.DateNeeded }}</td>
+						<td>{{ purchaserequest.DateNeeded | date:'d MMMM yyyy' }}</td>
 						<td>{{ purchaserequest.DeliveryMode }}</td>
 						<td>{{ purchaserequest.Status }}</td>
-						<td>{{ purchaserequest.SubmittedDate }}</td>
+						<td>{{ purchaserequest.SubmittedDate | date:'d MMMM yyyy h:m' }}</td>
 						<td>{{ purchaserequest.ReasonForRejection }}</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<div *ngIf='purchaserequest' class="addLineRow">
+		<div *ngIf='purchaserequest && user' class="addLineRow">
 			<h3 class="lineitem">Line Items:</h3>
-			<span class="addNew"><a *ngIf='purchaserequest.Status != "Approved"' (click)='changeStatusNew(purchaserequest.Id)' routerLink='/purchaserequestlineitem/create/{{prID}}' class="btn btn-success"><img id='createnew' src='assets/add-icon.png' title='Add New Line Item'>Add New</a></span>
+			<span class="addNew"><a *ngIf='purchaserequest.Status != "Approved" && purchaserequest.User.UserName == user.UserName' (click)='changeStatusNew(purchaserequest.Id)' routerLink='/purchaserequestlineitem/create/{{prID}}' class="btn btn-success"><img id='createnew' src='assets/add-icon.png' title='Add New Line Item'>Add New</a></span>
+			
 			<span class="addNew"><a *ngIf='purchaserequest.Status == "Approved"' class="btn btn-dark hidden"><img id='createnew' src='assets/delete.png' title='Can Not Add Line Items To Approved Request'>Can Not Add</a></span>
+			
+			<span class="addNew"><a *ngIf='purchaserequest.Status != "Approved" && purchaserequest.User.UserName != user.UserName' class="btn btn-dark hidden"><img id='createnew' src='assets/delete.png' title='Can Not Add Line Items To Another Employee Request'>Can Not Add</a></span>
 		</div>
 			<div class="scrollbox">
 				<table class="table table-sm" *ngIf="prlis && purchaserequest">
@@ -66,20 +69,35 @@
 				</tbody>
 			</table>
 		</div>
-		<h3 *ngIf="purchaserequest">Purchase Request Total:  {{ purchaserequest.Total | currency}}</h3>
+		<h3 *ngIf="purchaserequest">Purchase Request Total:  <span class="moneyText">{{ purchaserequest.Total | currency}}</span></h3>
 		<div *ngIf='prlis && purchaserequest' class="row">
+		
 			<button *ngIf='purchaserequest.Status == "New" && prlis.length == 0' class='btn btn-dark' title='Add Line Items To Submit'>Submit</button>
-			<button *ngIf='purchaserequest.Status == "New" && prlis.length > 0' (click)="submit()" class='btn btn-success' title='Submit Purchase Request'>Submit</button>
+			
+			<button *ngIf='purchaserequest.Status == "New" && prlis.length > 0 && purchaserequest.User.UserName == user.UserName' (click)="submit()" class='btn btn-success' title='Submit Purchase Request'>Submit</button>
+			
+			<button *ngIf='purchaserequest.Status == "New" && prlis.length > 0 && purchaserequest.User.UserName != user.UserName' class='btn btn-dark' title='Can Not Submit Another Employee Request'>Submit</button>
+			
 			<button *ngIf='purchaserequest.Status == "Review"' class='btn btn-dark' title='Already Submitted'>Submit</button>
-			<button *ngIf='purchaserequest.Status == "Rejected"' class='btn btn-dark' title='Edit The Request To Re-Submit'>Submit</button>
+			
+			<button *ngIf='purchaserequest.Status == "Rejected" && purchaserequest.User.UserName == user.UserName' class='btn btn-dark' title='Edit The Request To Re-Submit'>Submit</button>
+			
+			<button *ngIf='purchaserequest.Status == "Rejected" && purchaserequest.User.UserName != user.UserName' class='btn btn-dark' title='Can Not Submit Another Employee Request'>Submit</button>
+			
 			<button *ngIf='purchaserequest.Status == "Approved"' class='btn btn-dark' title='Already Approved'>Submit</button>
 				
-			<button *ngIf='purchaserequest.Status != "Approved"' (click)="changeStatusNew()" routerLink='/purchaserequest/edit/{{prID}}' class='btn btn-primary' title='Edit Purchase Request'>Edit</button>
+			<button *ngIf='purchaserequest.Status != "Approved" && purchaserequest.User.UserName == user.UserName ' (click)="changeStatusNew()" routerLink='/purchaserequest/edit/{{prID}}' class='btn btn-primary' title='Edit Purchase Request'>Edit</button>
+			
 			<button *ngIf='purchaserequest.Status == "Approved"' class='btn btn-dark' title='Already Approved'>Edit</button>
 			
+			<button *ngIf='purchaserequest.Status != "Approved" && purchaserequest.User.UserName != user.UserName ' class='btn btn-dark' title='Can Not Edit Another Employee Request'>Edit</button>
 			
-			<button *ngIf='prlis.length == 0' (click)="remove()" class='btn btn-danger' title='Delete Purchase Request'>Remove</button>
-			<button *ngIf='prlis.length > 0' class='btn btn-dark' title='Delete Line Items To Delete Request'>Remove</button>
+			<button *ngIf='prlis.length == 0 && purchaserequest.User.UserName == user.UserName' (click)="remove()" class='btn btn-danger' title='Delete Purchase Request'>Remove</button>
+			
+			<button *ngIf='prlis.length > 0  && purchaserequest.User.UserName != user.UserName' class='btn btn-dark' title='Can Not Remove Another Employee Request'>Remove</button>
+			
+			<button *ngIf='prlis.length > 0 && purchaserequest.User.UserName == user.UserName' class='btn btn-dark' title='Delete Line Items To Delete Request'>Remove</button>
+			
 		</div>
 	</div>
 </div>

@@ -4,11 +4,11 @@ header{
 }
 
 h1{
-	font-family: 'Cinzel', serif;
+	font-family: 'Raleway', serif;
 	color: aliceblue;
 	font-size: 16px;
 	background-image: none;
-	background-color: #606173;
+	background-color: #282938;
 	position: relative;
 	padding-left: 5%;
 	box-shadow: 2px 2px 3px #282938;
@@ -35,7 +35,8 @@ h1{
 }
 
 nav{
-	background-image: linear-gradient(#282938, #606173, #282938);
+/*	background-image: linear-gradient(#282938, #606173, #282938);*/
+	background-color: #405573;
 	box-shadow: 2px 2px 3px;
 }
 
@@ -45,7 +46,7 @@ li{
 }
 
 a{
-	font-family: 'Cinzel', serif;
+	font-family: 'Raleway', serif;
 	font-size: 2.5vw;
 	color: aliceblue;
 

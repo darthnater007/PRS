@@ -4,11 +4,11 @@ header{
 }
 
 #headfoot{
-	font-family: 'Cinzel', serif;
+	font-family: 'Raleway', serif;
 	color: aliceblue;
 	font-size: 16px;
 	background-image: none;
-	background-color: #606173;
+	background-color: #282938;
 	position: relative;
 	padding-left: 5%;
 	box-shadow: 2px 2px 3px #282938;
@@ -16,6 +16,31 @@ header{
 
 #barcode{
 	font-family: 'Libre Barcode 39 Extended', serif;
+}
+
+.loginForm{
+	background: black;
+	position: relative;
+	left: 10%;
+}
+
+.loginText{
+	color: aliceblue;
+	font-size: 6vw;
+}
+
+.scrollbox{
+	background-color: #172c4a;
+}
+
+.component-content{
+	background-image: url('https://images.pexels.com/photos/159627/pencils-clips-colour-pencils-foam-rubber-159627.jpeg?auto=compress&cs=tinysrgb&h=350');
+	background-size: cover;
+	width: 100%;
+}
+
+td{
+	font-size: 3vh;
 }
 
 footer{

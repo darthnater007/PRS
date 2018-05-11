@@ -20,13 +20,13 @@
 				  <th>Part Number:</th><td>{{ product.PartNumber }}</td>
 				</tr>
 				<tr>
-				  <th>Price:</th><td>{{ product.Price }}</td>
+				  <th>Price:</th><td>{{ product.Price | currency}}</td>
 				</tr>
 				<tr>
 				  <th>Unit:</th><td>{{ product.Unit }}</td>
 				</tr>
 				<tr>
-				  <th>Photo:</th><td><img src='{{ product.PhotoPath }}' alt="None"></td>
+				  <th>Photo:</th><td><img src='{{ product.PhotoPath }}' width="118px" height="118px" alt="None"></td>
 				</tr>
 			</table>
 		</div>

@@ -16,7 +16,7 @@ html{
 
 #headfoot{
 	border-radius: 0px;
-	font-family: 'Cinzel', serif;
+	font-family: 'Raleway', serif;
 	position: relative;
 	text-align: left;
 }
@@ -29,8 +29,8 @@ html{
 
 .contentBox{
 /*	background-image: linear-gradient(to top,rgb(70,127,82, 0.5),rgb(87,71,134, 0.5));*/
-	background-color: #405573;
-	border-radius: 20px;
+	background-color: rgb(23,44,74, 0.4);
+	border-radius: 3px;
 	position: absolute;
 	height: 84%;
 	width: 98%;
@@ -42,7 +42,7 @@ html{
 
 .Box{
 	background-image: radial-gradient(#282938 90%, #46475A);
-	border-radius: 20px;
+	border-radius: 3px;
 	box-shadow: 2px 2px 2px #282938;
 	position: relative;
 	width: 98%;
@@ -70,7 +70,7 @@ html{
 
 .actions a{
 	font-size: 3vh;
-	border-radius: 10px;
+	border-radius: 3px;
 	box-shadow: 2px 2px 2px black;
 	margin-left: 10%;
 	padding: 3px;
@@ -92,7 +92,7 @@ html{
 	overflow-y: auto;
 	overflow-x: hidden;
 	border: 1px solid aliceblue;
-	border-radius: 15px;
+	border-radius: 5px;
 }
 
 .form-group{
@@ -116,20 +116,17 @@ html{
 
 ::-webkit-scrollbar {
     width: 20px;
-	background-color: transparent;
+	background-color: #282938;
 }
 
 ::-webkit-scrollbar-track {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
 	background: #888; 
-    border-top-right-radius: 10px;
-	border-bottom-right-radius: 10px;
-	border-top-left-radius: 3px;
-	border-bottom-left-radius: 3px;
+    border-radius: 3px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 
@@ -138,14 +135,14 @@ html{
 }
 
 h1{
-	font-family: 'Cormorant Garamond', serif;
-	font-size: 4vw;
+	font-family: 'Raleway', serif;
+	font-size: 3.5vw;
 	color: aliceblue;
 	text-shadow: 0px 0px 1px;
-	background-image: linear-gradient(to right, #172c4a, #405573, #405573, #405573 ,#172c4a);
+	background-color: #606173;
 	box-shadow: 2px 2px 2px  #282938;
-	border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 }
 
 table{
@@ -162,7 +159,7 @@ td, th{
 }
 
 th{
-	font-family: 'Roboto Mono', monospace;
+	font-family: 'Raleway', monospace;
 	background-color: #172c4a;
 }
 
@@ -172,7 +169,7 @@ th a:hover{
 }
 
 td{
-	font-family: 'Cormorant Garamond', serif;
+	font-family: 'Roboto Mono', serif;
 	background-color: #405573;
 	padding: 100px;
 }

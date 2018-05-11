@@ -7,6 +7,10 @@
 	overflow-y: hidden;
 }
 
+.moneyText{
+	font-family: 'Roboto Mono', serif;
+}
+
 h3{
 	color: aliceblue;
 	font-size: 5vh;
@@ -14,7 +18,7 @@ h3{
 	margin-left: 10%;
 }
 
-th{
+th, td{
 	font-size: 1vw;
 }
 

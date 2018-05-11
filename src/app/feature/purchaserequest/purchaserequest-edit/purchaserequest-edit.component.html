@@ -7,28 +7,29 @@
 	</div>
 		<div class="scrollbox">
 			<p *ngIf = '!purchaserequest'>Loading...</p>
-			<div *ngIf = 'purchaserequest'></div>
-			<div class="form-group row">
-				<label class="col-sm-2">Description:</label>
-				<input [(ngModel)]='purchaserequest.Description' name = 'Description' type="text" class="form-control col-sm-6" id="purchaserequestdescription" aria-describedby="purchaserequestdescriptionHelp" placeholder="Description">
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-2">Justification:</label>
-				<input [(ngModel)]='purchaserequest.Justification' name = 'Justification' type="text" class="form-control col-sm-6" id="purchaserequestjustification" aria-describedby="purchaserequestjustification Help" placeholder="Justification">
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-2">Date Needed:</label>
-				<input [(ngModel)]='purchaserequest.DateNeeded' name = 'DateNeeded' type="date" class="form-control col-sm-6" id="purchaserequestdateneeded" aria-describedby="purchaserequestphotopathHelp" placeholder="Photo URL">
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-2">Delivery Mode:</label>
-				<select [(ngModel)]='purchaserequest.DeliveryMode' class="col-sm-6">
-					<option [ngValue]="purchaserequest.DeliveryMode" disabled selected hidden>{{purchaserequest.DeliveryMode}}</option>
-					<option value="UPS">UPS</option>
-					<option value="FedEx">FedEx</option>
-					<option value="Pickup">Pick Up</option>
-					<option value="unknown">Unknown</option>
-				</select>
+			<div *ngIf = 'purchaserequest'>
+				<div class="form-group row">
+					<label class="col-sm-2">Description:</label>
+					<input [(ngModel)]='purchaserequest.Description' name = 'Description' type="text" class="form-control col-sm-6" id="purchaserequestdescription" aria-describedby="purchaserequestdescriptionHelp" placeholder="Description">
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2">Justification:</label>
+					<input [(ngModel)]='purchaserequest.Justification' name = 'Justification' type="text" class="form-control col-sm-6" id="purchaserequestjustification" aria-describedby="purchaserequestjustification Help" placeholder="Justification">
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2">Date Needed:</label>
+					<input [(ngModel)]='purchaserequest.DateNeeded' name = 'DateNeeded' type="date" class="form-control col-sm-6" id="purchaserequestdateneeded" aria-describedby="purchaserequestphotopathHelp" placeholder="Photo URL">
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2">Delivery Mode:</label>
+					<select [(ngModel)]='purchaserequest.DeliveryMode' class="col-sm-6">
+						<option [ngValue]="purchaserequest.DeliveryMode" disabled selected hidden>{{purchaserequest.DeliveryMode}}</option>
+						<option value="UPS">UPS</option>
+						<option value="FedEx">FedEx</option>
+						<option value="Pickup">Pick Up</option>
+						<option value="unknown">Unknown</option>
+					</select>
+				</div>
 			</div>
 		</div>
 		<div class='row'>

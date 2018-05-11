@@ -22,10 +22,16 @@
 						<td *ngIf='pr.Status == "Review"'>{{pr.Status}}</td>
 						<td class = 'actions'>
 							<a routerLink='/purchaserequest/detail/{{pr.Id}}' class="btn btn-primary"><img src = 'assets/details.png'  title = 'Details'> </a>
+							
 							<a *ngIf='pr.Status == "Approved"' class="btn btn-dark"><img src='assets/pencil-icon.png'  title='Can Not Edit An Approved Request'></a>
-							<a *ngIf='pr.Status == "Rejected"' routerLink='/purchaserequest/edit/{{pr.Id}}' class="btn btn-danger"><img src='assets/pencil-icon.png'  title='Rejected'></a>
+							
+							<a *ngIf='pr.Status == "Rejected" && user.UserName == pr.User.UserName' (click)='changeStatusNew(pr)' routerLink='/purchaserequest/edit/{{pr.Id}}' class="btn btn-danger"><img src='assets/pencil-icon.png'  title='Rejected- Edit and Resubmit'></a>
+							
+							<a *ngIf='pr.Status == "Rejected" && user.UserName != pr.User.UserName' class="btn btn-dark"><img src='assets/pencil-icon.png'  title='Can Not Edit Another Employee Request'></a>
+							
 							<a *ngIf='pr.Status !== "Approved" && pr.Status !== "Rejected"  && user.UserName != pr.User.UserName' class="btn btn-dark"><img src='assets/pencil-icon.png'  title='Can Not Edit Another Employee Request'></a>
-							<a *ngIf='pr.Status !== "Approved" && pr.Status !== "Rejected"  && user.UserName == pr.User.UserName' routerLink='/purchaserequest/edit/{{pr.Id}}' class="btn btn-primary"><img src='assets/pencil-icon.png'  title='Edit'></a>
+							
+							<a *ngIf='pr.Status !== "Approved" && pr.Status !== "Rejected"  && user.UserName == pr.User.UserName' (click)='changeStatusNew(pr)' routerLink='/purchaserequest/edit/{{pr.Id}}' class="btn btn-primary"><img src='assets/pencil-icon.png'  title='Edit'></a>
 						</td>
 					</tr>
 				</table>

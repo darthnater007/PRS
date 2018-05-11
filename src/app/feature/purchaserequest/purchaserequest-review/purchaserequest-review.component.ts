@@ -51,6 +51,6 @@ constructor(private purchaserequestSvc: PurchaserequestService, private sysSvc: 
 	setSortBy(column: string): void {
 		console.log(column);
     	this.sortBy = column;
-  }
+	}
 	
 }//class

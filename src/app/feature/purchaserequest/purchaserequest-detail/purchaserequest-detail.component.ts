@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { User } from '../../../model/user';
+
 import { PurchaserequestService } from '../../../service/purchase-request.service';
 import { Purchaserequest } from '../../../model/purchaserequest';
 
 import { Purchaserequestlineitem } from '../../../model/purchaserequestlineitem';
 import { PurchaserequestlineitemService } from '../../../service/purchaserequestlineitem.service';
+
+import { SystemService } from '../../../service/system.service';
 
 @Component({
   selector: 'app-purchaserequest-detail',
@@ -17,11 +21,12 @@ export class PurchaserequestDetailComponent implements OnInit {
 	title: string = "Purchase Request Details";
 	purchaserequest: Purchaserequest;
 	prlis: Purchaserequestlineitem[];
+	user: User;
 	
 	prID: number;
 	sortBy: string = 'Id';
 
-	constructor(private purchaserequestSvc: PurchaserequestService, private prliSvc: PurchaserequestlineitemService, private router: Router, private route: ActivatedRoute) { }
+	constructor(private purchaserequestSvc: PurchaserequestService, private prliSvc: PurchaserequestlineitemService, private sysSvc: SystemService, private router: Router, private route: ActivatedRoute) { }
 
 	ngOnInit() {
 		this.route.params.subscribe(parms => {
@@ -35,6 +40,12 @@ export class PurchaserequestDetailComponent implements OnInit {
 			this.populateProductName();
 			this.populateProductPrice();
     	});
+		
+		if(this.sysSvc.data.user.loggedIn){
+			this.user = this.sysSvc.data.user.instance;
+		}else{
+			console.error("User not logged in.");
+		}
 	}
 		
 	getPurchaserequestById(id){

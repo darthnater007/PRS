@@ -38,6 +38,14 @@ constructor(private purchaserequestSvc: PurchaserequestService, private userSvc 
 		}
 	}
 	
+	changeStatusNew(pr: Purchaserequest): void{
+		console.log("PR changeStatus = " + pr)
+		pr.Status = "New"; 
+		this.purchaserequestSvc.change(pr).subscribe();
+		pr.ReasonForRejection = "";
+		this.purchaserequestSvc.change(pr).subscribe();
+	}
+	
 	populateUserName(): void {
     	for (let pr of this.purchaserequests) {
     		pr.UserName = pr.User.UserName;
@@ -45,7 +53,6 @@ constructor(private purchaserequestSvc: PurchaserequestService, private userSvc 
 	}
 	
 	setSortBy(column: string): void {
-	console.log(column);
     this.sortBy = column;
   }
 
