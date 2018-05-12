@@ -60,7 +60,7 @@ export class PurchaserequestDetailComponent implements OnInit {
 			});
 	}
 	
-removeLine(prliID: number): void {
+	removeLine(prliID: number): void {
 		this.prliSvc.remove(prliID).subscribe(res => {
 		this.ngOnInit();
 		})

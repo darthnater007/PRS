@@ -56,14 +56,40 @@
 						<td>${{ prli.Product.Price }}</td>
 						<td>{{ prli.Quantity }}</td>
 						<td class="actions">
-							<a routerLink='/purchaserequestlineitem/detail/{{prli.Id}}/{{prID}}' class="btn btn-primary"><img src = 'assets/details.png' title = 'Details'> </a>
+						
+							<a routerLink='/purchaserequestlineitem/detail/{{prli.Id}}/{{prID}}' class="btn btn-primary">
+							<img src = 'assets/details.png' title = 'Details'> 
+							</a>
 							
-							<a *ngIf='purchaserequest.Status != "Approved"' (click)='changeStatusNew()' routerLink='/purchaserequestlineitem/edit/{{prli.Id}}/{{prID}}' class="btn btn-primary"><img src='assets/pencil-icon.png' title='Edit'></a>
+							<a *ngIf='purchaserequest.Status != "Approved" && user.Id == purchaserequest.User.Id' 
+							(click)='changeStatusNew()' routerLink='/purchaserequestlineitem/edit/{{prli.Id}}/{{prID}}' class="btn btn-primary"><img src='assets/pencil-icon.png' title='Edit'>
+							</a>
 							
-							<a *ngIf='purchaserequest.Status == "Approved"' class="btn btn-dark"><img src='assets/pencil-icon.png' title='Can Not Edit Approved Request'></a>
+							<a *ngIf='purchaserequest.Status != "Approved" && user.Id != purchaserequest.User.Id' 
+							class="btn btn-dark">
+							<img src='assets/pencil-icon.png' title='Can Not Edit Another Employee Request'>
+							</a>
 							
-							<a *ngIf='purchaserequest.Status != "Approved"' (click)="changeStatusNew(purchaserequest.Id);removeLine(prli.Id)" class='btn btn-danger' title='Delete Line Item'><img src='assets/delete.png'></a>
-							<a *ngIf='purchaserequest.Status == "Approved"' class='btn btn-dark' title='Can Not Delete Line Item On Approved Request'><img src='assets/delete.png'></a>
+							<a *ngIf='purchaserequest.Status == "Approved" && user.Id == purchaserequest.User.Id' 
+							class="btn btn-dark">
+							<img src='assets/pencil-icon.png' title='Can Not Edit Approved Request'>
+							</a>
+							
+							<a *ngIf='purchaserequest.Status == "Approved" && user.Id != purchaserequest.User.Id' 
+							class="btn btn-dark">
+							<img src='assets/pencil-icon.png' title='Can Not Edit Approved Request'>
+							</a>
+							
+							<a *ngIf='purchaserequest.Status != "Approved" && user.Id == purchaserequest.User.Id' (click)="changeStatusNew(purchaserequest.Id);removeLine(prli.Id)" class='btn btn-danger' title='Delete Line Item'>
+							<img src='assets/delete.png'>
+							</a>
+							 
+							<a *ngIf='purchaserequest.Status != "Approved" && user.Id != purchaserequest.User.Id' class='btn btn-dark' title='Can Not Delete Another Employee Request'><img src='assets/delete.png'></a>
+							
+							<a *ngIf='purchaserequest.Status == "Approved" && user.Id == purchaserequest.User.Id' class='btn btn-dark' title='Can Not Delete Line Item On Approved Request'><img src='assets/delete.png'></a>
+							
+							<a *ngIf='purchaserequest.Status == "Approved" && user.Id != purchaserequest.User.Id' class='btn btn-dark' title='Can Not Delete Line Item On Another Employee Request'><img src='assets/delete.png'></a>
+							
 						</td>
 					</tr>
 				</tbody>

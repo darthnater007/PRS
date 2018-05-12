@@ -3,6 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './core/home/home.component';
 import { AboutComponent } from './core/about/about.component';
+import { AboutbeComponent } from './core/aboutbe/aboutbe.component';
+import { AboutfeComponent } from './core/aboutfe/aboutfe.component';
+import { AboutclassComponent } from './core/aboutclass/aboutclass.component';
 
 import { UserListComponent } from './feature/user/user-list/user-list.component';
 import { UserCreateComponent } from './feature/user/user-create/user-create.component';
@@ -35,6 +38,9 @@ const routes: Routes = [
 	{path:'', redirectTo:'/', pathMatch: 'full'},
 	{path:'home', component: HomeComponent},
 	{path:'about', component: AboutComponent},
+	{path:'be', component: AboutbeComponent },
+	{path:'fe', component: AboutfeComponent },
+	{path:'class', component: AboutclassComponent },
 	
 	{path:'user/list', component: UserListComponent},
 	{path: 'user/create', component: UserCreateComponent},

@@ -1,0 +1,55 @@
+<app-menu></app-menu>
+<div class = "contentBox">
+	<div class = "Box">
+		<h1><span id="barcode"> -------------</span>{{title}}</h1>
+		<div class="scrollbox">
+			<h1 class="aboutNav">
+				<ul>
+					<li *ngFor='let abt of aboutMenu' title='{{abt.tooltip}}'><a routerLink='{{abt.href}}'>{{abt.display}}</a></li>
+				</ul>
+			</h1>
+			<table class="table table-sm">
+				<tr>
+					<th>
+						<img src="./assets/mysql.png" height="100px" width="150px">
+					</th>
+					<td>
+						MySQL is, simply put, a flavor of SQL (Structured Query Language) that we used to create our database that stores all of our information, and then create the table within that keep it all organized and able to be called at will from the rest of the back end.
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<img src="./assets/java-square.png" height="100px" width="150px">
+					</th>
+					<td>
+						Java, originally developed in 1994 by Sun MicroSystems, is a robust object-oriented programming language that is similar to the C family of programming language.  For our project, we utilized Java 8 and 9 along with other technologies to shape the business rules for our back end.
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<img src="./assets/maven.png" height="100px" width="150px">
+					</th>
+					<td>
+						Maven is a dependency management system that we utilized to, you guessed it, manage the many dependencies that our program needs in order to run and speak effectively with our database, as well as any other technology that is called within our Spring Framework.  While we only studied Maven in this course, we have a solid foundation in dependency management, and could easily adapt to different dependency management systems such as Gradle.
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<img src="./assets/rest.png" height="100px" width="150px">
+					</th>
+					<td>
+						RESTful web services (Representational State Transfer) are a back end technology that allows an active server to remain constantly running, waiting patiently for a call to be made to it.  When the call is made, the server efficiently and quickly makes the transfer of data without having to spin up.  This efficiency make our project much faster when we call information from our back end.
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<img src="./assets/spring.png" height="100px" width="150px">
+					</th>
+					<td>
+						Spring is a massive back end framework that makes the construction of a back end infinitely more efficient.  Through Spring Boot, Web, and MVC (only a small corner of what Spring has to offer), our back end is able to manage calls and retrieval from our database without having to explicitly manage things like JPA, and ORM (Object Relation Mapping) programs such as Hibernate are managed within it as well.
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

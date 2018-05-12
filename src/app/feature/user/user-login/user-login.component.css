@@ -18,12 +18,6 @@ header{
 	font-family: 'Libre Barcode 39 Extended', serif;
 }
 
-.loginForm{
-	background: black;
-	position: relative;
-	left: 10%;
-}
-
 .loginText{
 	color: aliceblue;
 	font-size: 6vw;
@@ -37,6 +31,11 @@ header{
 	background-image: url('https://images.pexels.com/photos/159627/pencils-clips-colour-pencils-foam-rubber-159627.jpeg?auto=compress&cs=tinysrgb&h=350');
 	background-size: cover;
 	width: 100%;
+	position: relative;
+	
+	animation-name: loginAnim;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
 }
 
 td{
@@ -47,4 +46,9 @@ footer{
 	position: absolute;
 	width: 100%;
 	bottom: 0%;
+}
+
+@keyframes loginAnim{
+	0%{right: 120%}
+	100%{right: 0%};
 }

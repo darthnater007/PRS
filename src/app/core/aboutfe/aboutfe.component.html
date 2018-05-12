@@ -1,0 +1,71 @@
+<app-menu></app-menu>
+<div class = "contentBox">
+	<div class = "Box">
+		<h1><span id="barcode"> -------------</span>{{title}}</h1>
+		<div class="scrollbox">
+			<h1 class="aboutNav">
+				<ul>
+					<li *ngFor='let abt of aboutMenu' title='{{abt.tooltip}}'><a routerLink='{{abt.href}}'>{{abt.display}}</a></li>
+				</ul>
+			</h1>
+			<table class="table table-sm">
+				<tr>
+					<th>
+						<img src="./assets/html.png" height="100px" width="150px">
+					</th>
+					<td>
+						HyperText Markup Language, or HTML is a programming syntax that forms the backbone of everything that you see on the web.  HTML 5 was used extensively in the construction of every aspect of our front end to create the DOM (Document Object Model).  Basically, if you can see it somewhere on the page, our HTML code is responsible for it being there.
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<img src="./assets/css.png" height="100px" width="150px">
+					</th>
+					<td>
+						CSS, also known as Cascading Style Sheets, is a language that is specifically for manipulating the DOM to make things look pretty.  While custom CSS 3 styling is not used exclusively in this project, it is largely responsible for the look and feel of this site.
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<img src="./assets/javascript.png" height="100px" width="150px">
+					</th>
+					<td>
+						JavaScript, not to be confused with Java, is a versatile front end scripting language that is standard for all web browsers.  Through it's use, business logic can be accomplished, as well as manipulation of the DOM.
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<img src="./assets/bootstrap-logo.png" height="100px" width="150px">
+					</th>
+					<td>
+						Boostrap 4 is a massive online library written in JavaScript by some bright minds at Twitter that gives simple, modern, and easy to use styling straight from class attributes in your HTML code.  It's simplicity in use is deceptive, as Bootstrap is a massive library, and is responsible for much of the styled content available on the web today.
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<img src="./assets/jquery.png" height="100px" width="150px">
+					</th>
+					<td>
+						jQuery is a massive open-source JavaScript library that makes working with JavaScript many times more efficient and easy by introducing special selectors to manipulate DOM elements, and much, much more.  It is arguably the most popular JavaScript library, and its open-source nature make it free to use.
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<img src="./assets/ts-logo.png" height="100px" width="150px">
+					</th>
+					<td>
+						TypeScript is essentially a flavor of JavaScript.  Where JavaScript does not require typing on variables, TypeScript does require that a variable be strongly typed.  For this reason, TypeScript is widely used within the AngularJS framework.
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<img src="./assets/AngularJS.png" height="100px" width="150px">
+					</th>
+					<td>
+						Angular is the front end framework system that improves the efficiency and performance of any application.  While it is not impossible to create a single-page application without a framwork like Angular, the framework makes it relatively simple to make and create reactive and fully back-end compatible applications.
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

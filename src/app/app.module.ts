@@ -39,6 +39,9 @@ import { PurchaserequestlineitemEditComponent } from './feature/purchaserequestl
 import { SortPipe } from './pipe/sort.pipe';
 import { PurchaserequestReviewComponent } from './feature/purchaserequest/purchaserequest-review/purchaserequest-review.component';
 import { PurchaserequestApprovalComponent } from './feature/purchaserequest/purchaserequest-approval/purchaserequest-approval.component';
+import { AboutbeComponent } from './core/aboutbe/aboutbe.component';
+import { AboutfeComponent } from './core/aboutfe/aboutfe.component';
+import { AboutclassComponent } from './core/aboutclass/aboutclass.component';
 
 //organize these guys
 @NgModule({
@@ -76,6 +79,9 @@ import { PurchaserequestApprovalComponent } from './feature/purchaserequest/purc
     SortPipe,
     PurchaserequestReviewComponent,
     PurchaserequestApprovalComponent,
+    AboutbeComponent,
+    AboutfeComponent,
+    AboutclassComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+<app-menu></app-menu>
+<div class = "contentBox">
+	<div class = "Box">
+		<h1><span id="barcode"> -------------</span>{{title}}</h1>
+		<div class="scrollbox">
+			<h1 class="aboutNav">
+				<ul>
+					<li *ngFor='let abt of aboutMenu' title='{{abt.tooltip}}'><a routerLink='{{abt.href}}'>{{abt.display}}</a></li>
+				</ul>
+			</h1>
+		</div>
+	</div>
+</div>
