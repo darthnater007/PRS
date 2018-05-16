@@ -8,7 +8,7 @@
 			<table class="table table-sm" *ngIf='purchaserequestlineitem'>
 				<p *ngIf= '!purchaserequestlineitem'>Loading...</p>
 				<tr>
-				  <th>Id:</th><td>{{ purchaserequestlineitem.Id }}</td>
+				  <th>Id:</th><td class="col-sm-1">{{ purchaserequestlineitem.Id }}</td>
 				</tr>
 				<tr>
 				  <th>User:</th><td>{{ purchaserequestlineitem.PurchaseRequest.User.UserName }}</td>

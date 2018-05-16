@@ -23,3 +23,19 @@ a:hover{
 	top: 2px;
 	text-shadow: 0px 0px 3px aliceblue;
 }
+
+.anim{
+	position: relative;
+	font-size: 4vw;
+	animation-name: blink;
+	animation-duration: .5s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes blink{
+	0%{color:red}
+	25%{color: green}
+	50%{color: purple}
+	75%{color: yellow}
+	100%{color: white};
+}

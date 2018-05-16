@@ -1,25 +1,3 @@
-/* Alt Color Scheme--Blue and Green
-Blue Light to Dark
-#C3CFDE
-#9FB0C9
-#7991B0
-#5A769C
-#3F5E88
-
-Green Light to Dark
-#CBEBCD
-#AADDAD
-#88CE8D
-#64BA6A
-#44A34A
-
-Dark Grey
-#282938
-
-Midnight Blue
-#172c4a
-*/
-
 *{
 	padding: 0px;
 	margin: 0px;
@@ -27,7 +5,7 @@ Midnight Blue
 
 html{
 /*	background-image: url('https://images.pexels.com/photos/159627/pencils-clips-colour-pencils-foam-rubber-159627.jpeg?auto=compress&cs=tinysrgb&h=350');*/
-	background-color: #CBEBCD;
+	background-color: #cec9d5;
 	background-repeat: no-repeat;
 	background-size: cover;
 	position: absolute;
@@ -45,14 +23,14 @@ html{
 
 #barcode{
 	font-family: 'Libre Barcode 39 Extended', serif;
-	color: rgb(255, 183, 0, 0.2);
+	color: #282938;
 }
 
 
 .contentBox{
 /*	background-image: linear-gradient(to top,rgb(70,127,82, 0.5),rgb(87,71,134, 0.5));*/
-	background-color: rgb(255, 183, 0, 0.5);
-	border-radius: 10px;
+	background-color: rgb(23,44,74, 0.4);
+	border-radius: 3px;
 	position: absolute;
 	height: 84%;
 	width: 98%;
@@ -63,7 +41,7 @@ html{
 }
 
 .Box{
-	background-image: radial-gradient(#9FB0C9 90%, #46475A);
+	background-image: radial-gradient(#282938 90%, #46475A);
 	border-radius: 3px;
 	box-shadow: 2px 2px 2px #282938;
 	position: relative;
@@ -77,9 +55,8 @@ html{
 .addNew a{
 	color: aliceblue;
 	font-size: 3vh;
-	border: 2px solid darkgoldenrod;
 	box-shadow: 2px 2px 2px black;
-	border-radius: 10px;
+	border-radius: 15px;
 	position: relative;
 	float: right;
 	right: 5%;
@@ -106,13 +83,8 @@ html{
 	top: 2px;
 }
 
-.btn-primary:hover{
-	background: rgb(255, 183, 0, 0.8);
-		border-color: darkgoldenrod;
-}
-
 .scrollbox{
-	background-color: #3F5E88;
+	background-color: #405573;
 	height: 78%;
 	width: 95%;
 	margin: auto;
@@ -167,7 +139,7 @@ h1{
 	font-size: 3.5vw;
 	color: aliceblue;
 	text-shadow: 0px 0px 1px;
-	background-color: #172c4a;
+	background-color: #606173;
 	box-shadow: 2px 2px 2px  #282938;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -183,11 +155,12 @@ td, th{
 	color: aliceblue;
 	position: relative;
 	padding: 20px;
+	color: aliceblue;
 }
 
 th{
 	font-family: 'Raleway', monospace;
-	background-color: #44A34A;
+	background-color: #172c4a;
 }
 
 th a:hover{
@@ -196,8 +169,8 @@ th a:hover{
 }
 
 td{
-	font-family: 'Raleway', serif;
-	background-color: #3F5E88;
+	font-family: 'Roboto Mono', serif;
+	background-color: #405573;
 	padding: 100px;
 }
 
@@ -205,3 +178,4 @@ label{
 	font-family: 'Roboto Mono', monospace;
 	color: aliceblue;
 }
+

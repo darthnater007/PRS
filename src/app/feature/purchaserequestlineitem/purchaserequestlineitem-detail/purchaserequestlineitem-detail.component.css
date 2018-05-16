@@ -1,3 +1,7 @@
 th, td{
 	padding: 8px;
 }
+
+th{
+	background-color: #172c4a;
+}

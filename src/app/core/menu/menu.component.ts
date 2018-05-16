@@ -9,7 +9,7 @@ import { SystemService } from '@svc/system.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.componentAlt.css']
 })
 export class MenuComponent implements OnInit {
 user: User;

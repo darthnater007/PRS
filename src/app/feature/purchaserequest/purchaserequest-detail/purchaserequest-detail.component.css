@@ -12,8 +12,13 @@
 }
 
 h3{
-	color: aliceblue;
-	font-size: 5vh;
+	color: #172c4a;
+	position: relative;
+	padding-bottom: 1%;
+	padding-left: 1%;
+	width: 70%;
+	border-radius: 10px;
+	font-size: 36px;
 	font-family: 'Cormorant Garamond', serif;
 	margin-left: 10%;
 }

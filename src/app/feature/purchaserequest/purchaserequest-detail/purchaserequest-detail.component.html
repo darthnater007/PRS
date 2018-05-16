@@ -47,11 +47,16 @@
 						<th><a (click)="setSortBy('ProductName')" data-toggle="tooltip" title="Sort By Product Name">Product</a></th> 
 						<th><a (click)="setSortBy('ProductPrice')" data-toggle="tooltip" title="Sort By Product Price">Price</a></th> 
 						<th><a (click)="setSortBy('Quantity')" data-toggle="tooltip" title="Sort By Product Name">Quantity</a></th> 
-						<th>Details/Edit/Remove</th>
+						<th>Details/Edit</th>
+						<th>Remove Line Item</th>
 					</thead>
 					<tbody>
-						<td *ngIf='prlis.length == 0'>No Line Items On File</td>
-						<tr *ngFor = 'let prli of prlis | sort:sortBy'>
+						<td style="border-bottom: 1px solid red" *ngIf='prlis.length == 0'>No Line Items On File</td>
+						<td style="border-bottom: 1px solid red" *ngIf='prlis.length == 0'>N/A</td>
+						<td style="border-bottom: 1px solid red" *ngIf='prlis.length == 0'>N/A</td>
+						<td style="border-bottom: 1px solid red" *ngIf='prlis.length == 0'></td>
+						<td style="border-bottom: 1px solid red" *ngIf='prlis.length == 0'></td>
+						<tr  *ngFor = 'let prli of prlis | sort:sortBy'>
 						<td>{{ prli.Product.Name }}</td>
 						<td>${{ prli.Product.Price }}</td>
 						<td>{{ prli.Quantity }}</td>
@@ -79,7 +84,8 @@
 							class="btn btn-dark">
 							<img src='assets/pencil-icon.png' title='Can Not Edit Approved Request'>
 							</a>
-							
+						</td>
+						<td>
 							<a *ngIf='purchaserequest.Status != "Approved" && user.Id == purchaserequest.User.Id' (click)="changeStatusNew(purchaserequest.Id);removeLine(prli.Id)" class='btn btn-danger' title='Delete Line Item'>
 							<img src='assets/delete.png'>
 							</a>
